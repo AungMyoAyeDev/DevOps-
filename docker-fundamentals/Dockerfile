@@ -1,27 +1,27 @@
-FROM node:22-alpine AS builder
+FROM node:22-alpine AS build
 
-WORKDIR /app 
+WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install 
+RUN npm ci
 
 COPY . .
 
-CMD ["npm","run","build"]
-
-# for prodction
+RUN npm run build
 
 FROM node:22-alpine AS production
 
-WORKDIR /app 
+ENV NODE_ENV=production
+
+WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install --only=production
+RUN npm ci --omit=dev
 
-COPY --from=builder /app/dist ./dist
+COPY --from=build /app/dist ./dist
 
 EXPOSE 5000
 
-CMD ["npm","start"]
+CMD ["npm", "start"]
