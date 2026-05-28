@@ -1,13 +1,15 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose, { Schema } from "mongoose";
+import { connectToDB } from "./lib/db.ts";
 
 dotenv.config();
 
 const app = express();
 
 const PORT = Number(process.env.PORT) || 5000;
-const MONGO_URL = process.env.MONGO_URL || "mongodb://localhost:27017/docker-fundamentals";
+const MONGO_URL =
+  process.env.MONGO_URL || "mongodb://localhost:27017/docker-fundamentals";
 
 const messageSchema = new Schema(
   {
@@ -27,14 +29,16 @@ app.use(express.json());
 app.get("/", (_req, res) => {
   res.json({
     message: "server is running.",
-    database: mongoose.connection.readyState === 1 ? "connected" : "disconnected",
+    database:
+      mongoose.connection.readyState === 1 ? "connected" : "disconnected",
   });
 });
 
 app.get("/health", (_req, res) => {
   res.json({
     status: "ok",
-    database: mongoose.connection.readyState === 1 ? "connected" : "disconnected",
+    database:
+      mongoose.connection.readyState === 1 ? "connected" : "disconnected",
   });
 });
 
@@ -81,7 +85,7 @@ app.use(
 );
 
 async function startServer() {
-  await mongoose.connect(MONGO_URL);
+  connectToDB();
 
   app.listen(PORT, () => {
     console.log(`server is running on port ${PORT}`);
