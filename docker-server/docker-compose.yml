@@ -1,12 +1,11 @@
 services:
   server:
-    build:
-      context: .
-      target: builder
+    build: .
     ports:
       - "4000:4000"
     environment:
       - PORT=4000
     volumes:
-      - ./src:/app/src
-    command: npm run dev
+      - .:/app
+      - /app/node_modules
+    restart: unless-stopped

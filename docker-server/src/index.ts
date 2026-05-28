@@ -8,7 +8,7 @@ const app = express();
 app.use("/health", (req: Request, res: Response) => {
   res.json({
     success: true,
-    message: "All good",
+    message: "Server is running healthy",
   });
 });
 
