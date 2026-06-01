@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-const BASE_URL = import.meta.env.BASE_URL || "http://localhost:4000";
 type user = {
   name: string;
   email: string;
@@ -13,9 +12,10 @@ const App = () => {
   useEffect(() => {
     const fetchAPI = async () => {
       try {
-        const res = await fetch(BASE_URL + "/api/users");
-        const data = await res.json();
-        setUserData(data);
+        const res = await fetch("http://localhost:4000/users");
+        const response = await res.json();
+        console.log(response);
+        setUserData(response.data);
       } catch (error) {
         console.log(error);
       }

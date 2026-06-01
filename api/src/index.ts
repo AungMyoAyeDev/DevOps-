@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import usersRouter from "./users/route";
 dotenv.config();
 const app = express();
@@ -7,8 +8,13 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
+app.use(
+  cors({
+    origin: "*",
+  }),
+);
 
-app.use("/api", usersRouter);
+app.use("/", usersRouter);
 app.use("/", (req: Request, res: Response) => {
   res.status(200).json({
     success: true,

@@ -1,12 +1,31 @@
 services:
+  client:
+    build:
+      context: ./client
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
   api:
     build:
       context: ./api
     container_name: api-con
 
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+    depends_on:
+      - mongo
+
   mongo:
     image: mongo
-    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
 
   nginx:
     image: nginx:alpine
@@ -17,3 +36,5 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - api
+volumes:
+  mongo-data:
