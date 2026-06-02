@@ -2,6 +2,8 @@ import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import usersRouter from "./users/route";
+import { connectToDB } from "./lib/db";
+
 dotenv.config();
 const app = express();
 
@@ -22,6 +24,7 @@ app.use("/", (req: Request, res: Response) => {
   });
 });
 
+connectToDB();
 app.listen(PORT, () =>
   console.log(`Server is running on http://localhost:${PORT}`),
 );

@@ -1,6 +1,6 @@
 FROM node:22-alpine AS builder
 
-WORKDIR /app
+WORKDIR /app 
 
 COPY package*.json ./
 
@@ -8,20 +8,18 @@ RUN npm install
 
 COPY . .
 
+RUN npm run build
+
+FROM node:22-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install --omit=dev
+
+COPY --from=builder /app/dist ./dist 
+
 EXPOSE 4000
 
-CMD ["npm","run","dev"]
-
-# # FOR PRODUCTION BUILD STAGE
-
-# FROM node:22-alpine AS production
-
-# WORKDIR /app
-
-# COPY package*.json ./
-
-# RUN npm install --omit=dev
-
-# COPY --from=builder /dist/app ./dist 
-
-# CMD ["npm","run","start"]
+CMD ["npm","run","start"]

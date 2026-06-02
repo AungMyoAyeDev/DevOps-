@@ -12,7 +12,7 @@ const App = () => {
   useEffect(() => {
     const fetchAPI = async () => {
       try {
-        const res = await fetch("http://localhost:4000/users");
+        const res = await fetch("api/users");
         const response = await res.json();
         console.log(response);
         setUserData(response.data);
