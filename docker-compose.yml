@@ -1,7 +1,8 @@
 services:
-  api:
+  backend:
     build:
       context: ./api
+    container_name: express_api
 
     env_file:
       - .env
@@ -16,21 +17,15 @@ services:
 
     volumes:
       - mongo-data:/data/db
-
-  # frontend:
-  #   build:
-  #     context: ./client
-  #   restart: unless-stopped
-
-  nginx:
+  frontend:
     build:
-      context: .
-
+      context: ./client
+    container_name: client
     ports:
-      - "80:80"
+      - "8080:80"
 
     depends_on:
-      - api
+      - backend
     restart: unless-stopped
 volumes:
   mongo-data:
