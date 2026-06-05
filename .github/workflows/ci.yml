@@ -5,8 +5,12 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  hello:
+  info:
     runs-on: ubuntu-latest
     steps:
-      - name: Hello worl action
-        run: echo "Hello world"
+      - name: Show os
+        run: uname -a
+      - name: show current directory
+        run: pwd
+      - name: show files
+        run: ls -la
