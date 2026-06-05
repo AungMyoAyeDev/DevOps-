@@ -1,18 +1,17 @@
-name: CI
+name: CI BASIC
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  push: branches:[main]
+  pull_request: branches:[main]
 jobs:
-  info:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Show os
-        run: uname -a
-      - name: show current directory
-        run: pwd
-      - name: show files
-        run: ls -la
       - uses: actions/checkout@v4
-      - run: ls -la
+      - name: Current Directory
+        run: pwd
+      - name: List files
+        run: ls -la
+      - name: Node version
+        run: node -v
+      - name: Npm version
+        run: npm -v
