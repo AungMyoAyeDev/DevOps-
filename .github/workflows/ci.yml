@@ -14,3 +14,5 @@ jobs:
         run: pwd
       - name: show files
         run: ls -la
+      - uses: actions/checkout@v4
+        run: ls -la
