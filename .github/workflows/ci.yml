@@ -15,4 +15,4 @@ jobs:
       - name: show files
         run: ls -la
       - uses: actions/checkout@v4
-        run: ls -la
+      - run: ls -la
