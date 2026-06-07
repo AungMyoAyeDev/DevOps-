@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-
 type user = {
   name: string;
   email: string;
 };
+const vars = "wwww";
 const App = () => {
   const [userData, setUserData] = useState<user[]>([
     { name: "aa", email: "aa@a.com" },
