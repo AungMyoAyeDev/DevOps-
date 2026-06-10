@@ -1,0 +1,53 @@
+{
+  "name": "devops",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "tsx --watch src/server/index.ts",
+    "dev:client": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AungMyoAyeDev/DevOps-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/AungMyoAyeDev/DevOps-/issues"
+  },
+  "homepage": "https://github.com/AungMyoAyeDev/DevOps-#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongose": "^0.0.2-security",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@eslint/js": "^10.0.1",
+    "@rolldown/plugin-babel": "^0.2.3",
+    "@types/babel__core": "^7.20.5",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.9.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "concurrently": "^10.0.3",
+    "esbuild": "^0.28.0",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^8.0.12"
+  }
+}
