@@ -5,7 +5,12 @@
   "scripts": {
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:server": "tsx --watch src/server/index.ts",
-    "dev:client": "vite"
+    "dev:client": "vite",
+    "build": "npm run build:server && npm run build:client",
+    "build:client": "vite build",
+    "build:server": "node esbuild.config.js",
+    "start": "node dist/server.js",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
