@@ -10,7 +10,7 @@
     "build:client": "vite build",
     "build:server": "node esbuild.config.js",
     "start": "node dist/server.js",
-    "preview": "vite preview"
+    "preview": "vite previewx"
   },
   "repository": {
     "type": "git",
