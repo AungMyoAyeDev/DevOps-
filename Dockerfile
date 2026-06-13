@@ -1,0 +1,1 @@
+From node:22-alpine AS Base
